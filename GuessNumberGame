@@ -1,0 +1,49 @@
+//Guess number game
+import java.util.*;
+class GuessNumberGame{
+	public static void main(String []args) {
+		Scanner sc = new Scanner(System.in);
+		//getting range from user.
+		System.out.println("Enter in what range you want to play like 100,200,300....");
+		int range  = sc.nextInt();
+		//generating random number.
+		int randomNum = (int) ((Math.random() * range) + 1);
+		int guess=1;
+		System.out.println("Note:- You have only 10 guess");
+		System.out.println("Enter value to guess from 1 to "+range);
+		
+		while(guess<=10){
+			int userGuessNum=sc.nextInt();
+			//checking user input should in 1 to range.
+			if(userGuessNum<1||userGuessNum>range){
+				System.out.println("That's out of range! Try something from 1 to 100.");
+				continue;
+			}
+			//checking for win
+			if(userGuessNum==randomNum){
+				System.out.println(" Bullseye! You guessed it right! in "+guess+" Attempt");
+				break;
+			}
+			//checking if user use it's all guess
+			if(guess==10){
+				System.out.println("Sorry, you've used all 10 attempts. The number was "+randomNum+".");
+				break;
+			}
+			//giving alert message to user for its last attempt
+			if(guess==9){
+				System.out.println("Final guess! Give it your best shot.");
+			}
+
+			//checking if user number is greater or lesser
+			if(userGuessNum<randomNum){
+				System.out.println("Not quite. Hint: it's bigger than that.\nAttempt Used = "+guess);
+			}
+			else
+				System.out.println("Not quite. Hint: it's lesser  than that.\nAttempt Used = "+guess);
+
+			guess++;//increasing user attempt
+		}
+		sc.close();
+	}
+
+}
