@@ -3,19 +3,16 @@ import java.util.*;
 class GuessNumberGame{
 	public static void main(String []args) {
 		Scanner sc = new Scanner(System.in);
-		//getting range from user.
-		System.out.println("Enter in what range you want to play like 100,200,300....");
-		int range  = sc.nextInt();
 		//generating random number.
-		int randomNum = (int) ((Math.random() * range) + 1);
+		int randomNum = (int) ((Math.random() * 100) + 1);
 		int guess=1;
 		System.out.println("Note:- You have only 10 guess");
-		System.out.println("Enter value to guess from 1 to "+range);
+		System.out.println("Enter value to guess from 1 to 100.");
 		
 		while(guess<=10){
 			int userGuessNum=sc.nextInt();
 			//checking user input should in 1 to range.
-			if(userGuessNum<1||userGuessNum>range){
+			if(userGuessNum<=1||userGuessNum>=100){
 				System.out.println("That's out of range! Try something from 1 to 100.");
 				continue;
 			}
